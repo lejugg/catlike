@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7127438991169545469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0878, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3482812144007368107}
@@ -127,8 +127,6 @@ GameObject:
   - component: {fileID: 3482812144007368107}
   - component: {fileID: 7431844939464644515}
   - component: {fileID: 7431844939464644516}
-  - component: {fileID: 7431844939464644517}
-  - component: {fileID: 1782034189}
   m_Layer: 2
   m_Name: Character
   m_TagString: Untagged
@@ -164,10 +162,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboardInput: {fileID: 7431844939464644516}
-  rigidbody: {fileID: 7431844939464644517}
   movementForce: 5
-  jumpForce: 5
-  _spriteRenderer: {fileID: 4017096652531919735}
+  maxAcc: 1
+  maxVel: 1
+  accDrag: 0.5
+  velDrag: 0.5
+  gravity: {x: 0, y: -0.9, z: 0}
 --- !u!114 &7431844939464644516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,40 +180,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3f11ebf0bd407c9be3652ef263ae5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &7431844939464644517
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8365335247297515919}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 2
-  m_SleepingMode: 0
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!58 &1782034189
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8365335247297515919}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.09

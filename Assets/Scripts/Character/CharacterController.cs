@@ -10,15 +10,19 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float maxVel = 1f;
     [SerializeField] private float accDrag = 0.5f;
     [SerializeField] private float velDrag = 0.5f;
+    [SerializeField] private float airControl = 0.3f;
+    [SerializeField] private float jumpForce = 0.3f;
     [SerializeField] private Vector3 gravity = new Vector3(0f, -0.9f, 0f);
 
-    private Vector3 input = Vector3.zero;
-    private Vector3 acc = Vector3.zero;
-    private Vector3 vel = Vector3.zero;
-    private Vector3 pos = Vector3.zero;
-    private Vector3 _previousPos = Vector3.zero;
+    private UnityEngine.Vector3 input = UnityEngine.Vector3.zero;
+    private UnityEngine.Vector3 acc = UnityEngine.Vector3.zero;
+    private UnityEngine.Vector3 vel = UnityEngine.Vector3.zero;
+    private UnityEngine.Vector3 pos = UnityEngine.Vector3.zero;
+    private UnityEngine.Vector3 _previousPos = UnityEngine.Vector3.zero;
 
     private bool isGrounded;
+    private float _distanceToGround;
+    private UnityEngine.Vector2 _closestGroundHit;
 
     private void Awake()
     {
@@ -31,12 +35,21 @@ public class CharacterController : MonoBehaviour
 
     private void Move(Vector3 dir)
     {
-        input += dir;
+        if (isGrounded)
+        {
+            input += dir;
+        } else
+        {
+            input += dir * airControl;
+        }
     }
 
     private void Jump()
     {
-        input += Vector3.up;
+        if (isGrounded)
+        {
+            input += Vector3.up * jumpForce;
+        }
     }
 
     void FixedUpdate()
@@ -46,27 +59,42 @@ public class CharacterController : MonoBehaviour
         CheckIsGrounded();
         ApplyMovement();
         
-        Debug.DrawLine(_previousPos, transform.position, Color.green, 5f);
+        Debug.DrawLine(_previousPos, transform.position, new Color(0.2f, 1f,1f), 3f);
     }
 
     private void CheckIsGrounded()
     {
-        isGrounded = transform.position.y < 0;
+        var hit = Physics2D.Raycast(transform.position, Vector2.down);
+        
+        if (hit.collider != null ) 
+        {
+            Debug.DrawLine(transform.position - Vector3.up,hit.point, Color.blue, 5f);
+
+            _distanceToGround = Vector2.Distance(hit.point, transform.position);
+            _closestGroundHit = hit.point;
+            isGrounded = _distanceToGround < 0.1f + Mathf.Abs(vel.y);
+        } else
+        {
+            isGrounded = false;
+        }
     }
 
     private void ApplyMovement()
     {
-        input.Normalize();
         input *= movementForce;
 
         acc += input;
         Vector3.ClampMagnitude(acc, maxAcc);
         if(!isGrounded) acc += gravity;
-
+        
         vel += acc;
         Vector3.ClampMagnitude(vel, maxVel);
-
+        
         pos += vel;
+        if (isGrounded)
+        {
+            pos = new Vector3(pos.x, Mathf.Max(_closestGroundHit.y, pos.y), pos.z);
+        }
         transform.position = pos;
 
         if (input.magnitude < maxAcc)
@@ -75,12 +103,13 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            input *= (input.magnitude - maxAcc);
+            input -= input.normalized * maxAcc;
         }
 
         acc *= accDrag;
-        vel *= velDrag;
+        vel *= velDrag;            
     }
+
 
     // private void ApplyMovementForce()
     // {
@@ -111,8 +140,8 @@ public class CharacterController : MonoBehaviour
         return isGrounded;
     }
 
-    public Vector2 GetVelocity()
+    public UnityEngine.Vector2 GetVelocity()
     {
-        return Vector2.zero;
+        return UnityEngine.Vector2.zero;
     }
 }

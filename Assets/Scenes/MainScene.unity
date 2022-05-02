@@ -476,6 +476,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &874182546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7431844939464644516, guid: 8668f75c382ec467f8d950b2d2ec297c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7431844939464644512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3f11ebf0bd407c9be3652ef263ae5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &893024421
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,12 +970,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
+        type: 3}
+      propertyPath: gravity.y
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
+        type: 3}
+      propertyPath: jumpForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
+        type: 3}
+      propertyPath: rigidbody
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
+        type: 3}
+      propertyPath: keyboardInput
+      value: 
+      objectReference: {fileID: 874182546}
+    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
+        type: 3}
+      propertyPath: movementForce
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
+        type: 3}
+      propertyPath: _spriteRenderer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8365335247297515919, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431844939464644517, guid: 8668f75c382ec467f8d950b2d2ec297c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8668f75c382ec467f8d950b2d2ec297c, type: 3}
 --- !u!4 &7431844939464644513 stripped
 Transform:

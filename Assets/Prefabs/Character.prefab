@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7127438991169545469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0878, z: 0}
+  m_LocalPosition: {x: 0, y: 0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3482812144007368107}
@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 7127438991169545469}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3f37e43e4c904372815a6b5e696ad7d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -143,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 8365335247297515919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4758314826199937845}
   m_Father: {fileID: 0}
@@ -162,12 +162,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboardInput: {fileID: 7431844939464644516}
-  movementForce: 5
+  movementForce: 0.03
   maxAcc: 1
   maxVel: 1
   accDrag: 0.5
   velDrag: 0.5
-  gravity: {x: 0, y: -0.9, z: 0}
+  airControl: 0.15
+  jumpForce: 1
+  characterHeight: 0.3
+  gravity: {x: 0, y: -0.01, z: 0}
+  spriteRenderer: {fileID: 4017096652531919735}
 --- !u!114 &7431844939464644516
 MonoBehaviour:
   m_ObjectHideFlags: 0

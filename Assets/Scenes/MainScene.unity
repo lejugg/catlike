@@ -147,8 +147,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50980384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.59, y: -2.12, z: 0}
-  m_LocalScale: {x: 24.018875, y: 4.24375, z: 1}
+  m_LocalPosition: {x: 11.55, y: -3.32, z: 0}
+  m_LocalScale: {x: 65.1512, y: 4.24375, z: 1}
   m_Children: []
   m_Father: {fileID: 386368681}
   m_RootOrder: 2
@@ -476,18 +476,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &874182546 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7431844939464644516, guid: 8668f75c382ec467f8d950b2d2ec297c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7431844939464644512}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3f11ebf0bd407c9be3652ef263ae5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &893024421
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,8 +701,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086586201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.98, y: -2.88, z: 0}
-  m_LocalScale: {x: 31.524773, y: 5.45625, z: 1}
+  m_LocalPosition: {x: 11.5053, y: -4.14, z: 0}
+  m_LocalScale: {x: 120.78422, y: 5.45625, z: 1}
   m_Children: []
   m_Father: {fileID: 386368681}
   m_RootOrder: 1
@@ -822,7 +810,7 @@ Transform:
   m_GameObject: {fileID: 1302832170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.01, y: -5.52, z: 0}
-  m_LocalScale: {x: 143.43605, y: 12.125001, z: 1}
+  m_LocalScale: {x: 1276.5808, y: 12.125001, z: 1}
   m_Children: []
   m_Father: {fileID: 386368681}
   m_RootOrder: 0
@@ -910,25 +898,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 77900734}
     m_Modifications:
-    - target: {fileID: 988563704496427086, guid: 8668f75c382ec467f8d950b2d2ec297c,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c3f37e43e4c904372815a6b5e696ad7d, type: 2}
     - target: {fileID: 3482812144007368107, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3482812144007368107, guid: 8668f75c382ec467f8d950b2d2ec297c,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3482812144007368107, guid: 8668f75c382ec467f8d950b2d2ec297c,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3482812144007368107, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
@@ -980,74 +953,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4758314826199937845, guid: 8668f75c382ec467f8d950b2d2ec297c,
+    - target: {fileID: 4017096652531919735, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.09
+      propertyPath: m_Color.a
+      value: 0.4745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017096652531919735, guid: 8668f75c382ec467f8d950b2d2ec297c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
       propertyPath: maxAcc
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
       propertyPath: maxVel
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
-      propertyPath: accDrag
-      value: 0.5
+      propertyPath: airDrag
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
       propertyPath: velDrag
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
-        type: 3}
-      propertyPath: gravity.y
-      value: -0.1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
       propertyPath: jumpForce
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
-        type: 3}
-      propertyPath: rigidbody
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
-        type: 3}
-      propertyPath: airControl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
-        type: 3}
-      propertyPath: keyboardInput
-      value: 
-      objectReference: {fileID: 874182546}
     - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
       propertyPath: movementForce
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 7431844939464644515, guid: 8668f75c382ec467f8d950b2d2ec297c,
-        type: 3}
-      propertyPath: _spriteRenderer
-      value: 
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8365335247297515919, guid: 8668f75c382ec467f8d950b2d2ec297c,
         type: 3}
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7431844939464644517, guid: 8668f75c382ec467f8d950b2d2ec297c, type: 3}
-    - {fileID: 1782034189, guid: 8668f75c382ec467f8d950b2d2ec297c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8668f75c382ec467f8d950b2d2ec297c, type: 3}
 --- !u!4 &7431844939464644513 stripped
 Transform:

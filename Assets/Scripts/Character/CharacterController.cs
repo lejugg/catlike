@@ -10,19 +10,22 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float maxVel = 1f;
     [SerializeField] private float accDrag = 0.5f;
     [SerializeField] private float velDrag = 0.5f;
+    [SerializeField] private float airDrag = 0.9f;
     [SerializeField] private float airControl = 0.3f;
     [SerializeField] private float jumpForce = 0.3f;
+    [SerializeField] private float characterHeight = 0.2f;
     [SerializeField] private Vector3 gravity = new Vector3(0f, -0.9f, 0f);
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    private UnityEngine.Vector3 input = UnityEngine.Vector3.zero;
-    private UnityEngine.Vector3 acc = UnityEngine.Vector3.zero;
-    private UnityEngine.Vector3 vel = UnityEngine.Vector3.zero;
-    private UnityEngine.Vector3 pos = UnityEngine.Vector3.zero;
-    private UnityEngine.Vector3 _previousPos = UnityEngine.Vector3.zero;
+    private Vector3 input = Vector3.zero;
+    private Vector3 acc = Vector3.zero;
+    private Vector3 vel = Vector3.zero;
+    private Vector3 pos = Vector3.zero;
+    private Vector3 _previousPos = Vector3.zero;
 
     private bool isGrounded;
     private float _distanceToGround;
-    private UnityEngine.Vector2 _closestGroundHit;
+    private Vector2 _closestGroundHit;
 
     private void Awake()
     {
@@ -59,24 +62,28 @@ public class CharacterController : MonoBehaviour
         CheckIsGrounded();
         ApplyMovement();
         
-        Debug.DrawLine(_previousPos, transform.position, new Color(0.2f, 1f,1f), 3f);
+        Debug.DrawLine(_previousPos, transform.position, isGrounded ? Color.red : Color.yellow, 3f);
     }
 
     private void CheckIsGrounded()
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.down);
+        var hit = Physics2D.Raycast(transform.position + Vector3.up * characterHeight, Vector2.down);
         
         if (hit.collider != null ) 
         {
-            Debug.DrawLine(transform.position - Vector3.up,hit.point, Color.blue, 5f);
+             Debug.DrawLine(transform.position,hit.point, new Color(1f,1f,1f, 0.3f), 3f);
+             // Debug.DrawLine(hit.point + Vector2.up * 0.01f,hit.point, Color.black, 3f);
 
             _distanceToGround = Vector2.Distance(hit.point, transform.position);
             _closestGroundHit = hit.point;
-            isGrounded = _distanceToGround < 0.1f + Mathf.Abs(vel.y);
+            
+            // only factor in downwards velocity into when grounding should happen
+            isGrounded = _distanceToGround < 0.01f + Mathf.Max(0f, -vel.y); 
         } else
         {
             isGrounded = false;
         }
+
     }
 
     private void ApplyMovement()
@@ -84,30 +91,31 @@ public class CharacterController : MonoBehaviour
         input *= movementForce;
 
         acc += input;
-        Vector3.ClampMagnitude(acc, maxAcc);
         if(!isGrounded) acc += gravity;
-        
+        if (acc.magnitude > maxAcc)
+        {
+            acc = acc.normalized * maxAcc;
+        }
+
         vel += acc;
-        Vector3.ClampMagnitude(vel, maxVel);
+        if (vel.magnitude > maxVel)
+        {
+            vel = vel.normalized * maxVel;
+        }
         
         pos += vel;
         if (isGrounded)
         {
-            pos = new Vector3(pos.x, Mathf.Max(_closestGroundHit.y, pos.y), pos.z);
+            pos = new Vector3(pos.x, _closestGroundHit.y + Mathf.Max(0f, vel.y), pos.z);
         }
         transform.position = pos;
 
-        if (input.magnitude < maxAcc)
-        {
-            input = Vector3.zero;
-        }
-        else
-        {
-            input -= input.normalized * maxAcc;
-        }
-
-        acc *= accDrag;
-        vel *= velDrag;            
+        acc *= isGrounded ? accDrag : airDrag;
+        vel *= velDrag;
+        input = Vector3.zero;
+                    
+        Debug.DrawLine(transform.position, transform.position + vel * 5f, Color.magenta);
+        Debug.DrawLine(transform.position + vel * 5f, transform.position + vel * 5f  + acc * 5f, Color.yellow);
     }
 
 
@@ -140,8 +148,8 @@ public class CharacterController : MonoBehaviour
         return isGrounded;
     }
 
-    public UnityEngine.Vector2 GetVelocity()
+    public Vector2 GetVelocity()
     {
-        return UnityEngine.Vector2.zero;
+        return Vector2.zero;
     }
 }
